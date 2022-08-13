@@ -1,0 +1,55 @@
+{
+  "name": "web-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:prod",
+    "build:dev": "node_modules/.bin/cross-env NODE_ENV=development webpack --config=build-scripts/webpack.config.js",
+    "build:prod": "node_modules/.bin/cross-env NODE_ENV=production webpack --config=build-scripts/webpack.config.js",
+    "lint": "eslint --ext .js src/ build-scripts/ babel.config.js",
+    "lint:fix": "eslint --ext .js src/ build-scripts/ babel.config.js --fix",
+    "stylelint": "stylelint src/**/*.{css,scss}",
+    "stylelint:fix": "stylelint src/**/*.{css,scss} --fix"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ant478/web-components.git"
+  },
+  "author": "ant478",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ant478/web-components/issues"
+  },
+  "homepage": "https://github.com/ant478/web-components#readme",
+  "devDependencies": {
+    "@babel/core": "7.18.10",
+    "@babel/eslint-parser": "7.18.9",
+    "@babel/preset-env": "7.18.10",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.2.5",
+    "clean-webpack-plugin": "4.0.0",
+    "cross-env": "7.0.3",
+    "css-loader": "6.7.1",
+    "eslint": "8.21.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "glob": "8.0.3",
+    "handlebars-loader": "1.7.2",
+    "postcss-loader": "6.2.1",
+    "postcss-preset-env": "6.7.1",
+    "sass": "1.54.4",
+    "sass-loader": "13.0.2",
+    "stylelint": "13.13.1",
+    "stylelint-config-sass-guidelines": "8.0.0",
+    "stylelint-config-standard": "22.0.0",
+    "terser-webpack-plugin": "5.3.3",
+    "to-string-loader": "1.2.0",
+    "webpack": "5.74.0",
+    "webpack-cli": "4.10.0",
+    "webpack-merge": "5.8.0"
+  }
+}
