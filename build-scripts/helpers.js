@@ -9,7 +9,7 @@ function pathResolve(relativePath) {
 }
 
 function getComponentsEntries() {
-  const files = glob.sync(pathResolve('src/components/*/index.js').replace(/\\/g, '/'));
+  const files = glob.sync(pathResolve('lib/src/components/*/index.js').replace(/\\/g, '/'));
 
   return files.reduce((entries, file) => {
     const name = /.*?\/?([^/]+?)\/index\.js$/.exec(file)[1];

@@ -1,5 +1,5 @@
 .idea/*
-dist/*
-build*
-stats/*
+lib/dist/*
+lib/stats/*
+build/*
 node_modules
