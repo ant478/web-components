@@ -15,7 +15,7 @@ function getComponentsEntries() {
     const name = /.*?\/?([^/]+?)\/index\.js$/.exec(file)[1];
 
     if (name in entries) {
-      throw new Error('helpers.js: worker names should be unique');
+      throw new Error('helpers.js: component names should be unique');
     }
 
     entries[name] = {

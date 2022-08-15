@@ -1,7 +1,5 @@
 .idea/*
-build/*
-!build/.gitkeep
+dist/*
+build*
 stats/*
-!stats/.gitkeep
 node_modules
-build-scripts/webpack.config.local.js

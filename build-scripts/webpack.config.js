@@ -7,25 +7,39 @@ const { getComponentsEntries } = require('./helpers');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+const componentEntries = getComponentsEntries();
+const componentNames = Object.keys(componentEntries);
+
 module.exports = () => merge(
   {
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment ? 'inline-cheap-module-source-map' : undefined,
     performance: false,
     entry: {
-      ...getComponentsEntries()
+      ...componentEntries
     },
     output: {
       libraryTarget: 'umd',
       library: '[name]',
       filename: '[name].js',
-      path: paths.output
+      path: paths.dist
     },
     externals: {
       handlebars: 'handlebars',
       'handlebars/runtime': 'handlebars/runtime'
     },
     optimization: {
+      splitChunks: {
+        cacheGroups: {
+          common: {
+            test: /[\\/]common[\\/]/,
+            name: 'common',
+            chunks: ({ name }) => componentNames.includes(name),
+            enforce: true
+          }
+        }
+      },
+      concatenateModules: false,
       minimizer: [
         new TerserPlugin()
       ]
