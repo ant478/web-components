@@ -22,7 +22,8 @@ module.exports = () => merge(
       libraryTarget: 'umd',
       library: '[name]',
       filename: '[name].js',
-      path: paths.dist
+      path: paths.dist,
+      globalObject: 'this',
     },
     externals: {
       handlebars: 'handlebars',
