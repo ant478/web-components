@@ -13,10 +13,8 @@
     "url": "https://github.com/ant478/web-components/issues"
   },
   "scripts": {
-    "install": "echo \"Error: Dependencies should be installed from root directory.\" && exit 1",
     "build": "cd .. && npm run build:lib:prod",
-    "prepack": "npm run build",
-    "analyze": "cd .. && npm run analyze:lib"
+    "prepack": "npm run build"
   },
   "files": [
     "src/",
