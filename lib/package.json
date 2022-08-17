@@ -1,6 +1,6 @@
 {
   "name": "@ant478/web-components",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "module": "dist/index.esm.js",
   "main": "dist/index.umd.js",
   "description": "",
