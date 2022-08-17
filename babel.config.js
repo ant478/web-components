@@ -1,14 +1,15 @@
 module.exports = (api) => {
   api.cache.never();
 
-  const presetEnvOptions = {};
+  const presetEnvOptions = {
+    modules: false,
+  };
   const presets = [['@babel/preset-env', presetEnvOptions]];
-  const plugins = [];
+  const plugins = ['@babel/plugin-proposal-export-default-from'];
 
   if (process.env.GOAL === 'storybook') {
     presetEnvOptions.corejs = '3.24.1';
     presetEnvOptions.useBuiltIns = 'usage';
-    presetEnvOptions.modules = false;
 
     plugins.push('@babel/plugin-transform-runtime');
   }

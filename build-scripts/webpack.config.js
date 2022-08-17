@@ -1,99 +1,33 @@
-const TerserPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { merge } = require('webpack-merge');
+const webpackBaseConfig = require('./webpack.base.config');
 
 const paths = require('./paths');
-const { getComponentsEntries } = require('./helpers');
 
-const isDevelopment = process.env.NODE_ENV === 'development';
-
-const componentEntries = getComponentsEntries();
-const componentNames = Object.keys(componentEntries);
-
-module.exports = () => merge(
-  {
-    mode: isDevelopment ? 'development' : 'production',
-    devtool: isDevelopment ? 'inline-cheap-module-source-map' : undefined,
-    performance: false,
-    entry: {
-      ...componentEntries
-    },
+module.exports = () => [
+  webpackBaseConfig({
     output: {
-      libraryTarget: 'umd',
-      library: '[name]',
-      filename: '[name].js',
+      filename: '[name].esm.js',
       path: paths.dist,
-      globalObject: 'this',
-    },
-    externals: {
-      handlebars: 'handlebars',
-      'handlebars/runtime': 'handlebars/runtime'
-    },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          common: {
-            test: /[\\/]common[\\/]/,
-            name: 'common',
-            chunks: ({ name }) => componentNames.includes(name),
-            enforce: true
-          }
-        }
+      library: {
+        type: 'module'
       },
-      concatenateModules: false,
-      minimizer: [
-        new TerserPlugin()
-      ]
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: [paths.nodeModules],
-          use: 'babel-loader'
-        },
-        {
-          test: /\.s?css$/,
-          use: [
-            'to-string-loader',
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: ['postcss-preset-env']
-                }
-              }
-            },
-            'sass-loader'
-          ]
-        },
-        {
-          test: /\.hbs/,
-          use: [
-            {
-              loader: 'handlebars-loader',
-              options: {
-                runtime: 'handlebars/runtime'
-              }
-            }
-          ]
-        }
-      ]
-    },
-    resolve: {
-      alias: {
-        src: paths.src
+      environment: {
+        module: true
       }
     },
-    plugins: [
-      new CleanWebpackPlugin({
-        cleanStaleWebpackAssets: false,
-        cleanOnceBeforeBuildPatterns: [
-          '**/*',
-          '!.gitkeep'
-        ]
-      })
-    ]
-  }
-);
+    experiments: {
+      outputModule: true
+    },
+  }),
+  webpackBaseConfig({
+    output: {
+      filename: '[name].umd.js',
+      path: paths.dist,
+      library: {
+        name: 'WebComponents',
+        type: 'umd',
+      },
+      globalObject: 'this',
+      umdNamedDefine: true,
+    },
+  }),
+];

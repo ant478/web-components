@@ -45,6 +45,7 @@
   "devDependencies": {
     "@babel/core": "7.18.10",
     "@babel/eslint-parser": "7.18.9",
+    "@babel/plugin-proposal-export-default-from": "7.18.10",
     "@babel/plugin-transform-runtime": "7.18.10",
     "@babel/preset-env": "7.18.10",
     "@storybook/builder-webpack5": "6.5.10",
@@ -57,7 +58,6 @@
     "eslint": "8.21.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.26.0",
-    "glob": "8.0.3",
     "handlebars": "4.7.7",
     "handlebars-loader": "1.7.2",
     "lit-html": "2.3.0",

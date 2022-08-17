@@ -1,9 +1,12 @@
 {
   "name": "@ant478/web-components",
   "version": "1.0.3",
+  "module": "dist/index.esm.js",
+  "main": "dist/index.umd.js",
   "description": "",
   "author": "ant478",
   "license": "ISC",
+  "sideEffects": false,
   "homepage": "https://github.com/ant478/web-components#readme",
   "repository": {
     "type": "git",
@@ -17,7 +20,6 @@
     "prepack": "npm run build"
   },
   "files": [
-    "src/",
     "dist/"
   ],
   "dependencies": {
