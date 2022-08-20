@@ -64,7 +64,7 @@ export default {
       plugins: [
         postcssPresetEnv()
       ],
-      sourceMap: true,
+      sourceMap: isDevelopment,
       minimize: !isDevelopment,
       extract: false,
       extensions: ['.sass']
