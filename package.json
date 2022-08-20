@@ -7,7 +7,7 @@
     "start:dev": "node_modules/.bin/cross-env NODE_ENV=development node server/default.js",
     "start:prod": "node_modules/.bin/cross-env NODE_ENV=production node server/default.js",
     "start:heroku": "node_modules/.bin/cross-env NODE_ENV=production node ./server/heroku.js",
-    "storybook": "node_modules/.bin/cross-env NODE_ENV=development GOAL=storybook start-storybook -p 4780 -c build-scripts/.storybook --https --ssl-cert sslcert/cert.pem --ssl-key sslcert/key.pem --no-open",
+    "storybook": "node_modules/.bin/cross-env NODE_ENV=development GOAL=storybook start-storybook -p 4780 -c build-scripts/.storybook --https --ssl-cert sslcert/cert.pem --ssl-key sslcert/key.pem --no-open --no-manager-cache",
     "build": "node_modules/.bin/cross-env NODE_ENV=production GOAL=storybook build-storybook -o build -c build-scripts/.storybook",
     "build:lib": "npm run build:lib:prod",
     "build:lib:dev": "node_modules/.bin/cross-env NODE_ENV=development GOAL=lib rollup --compact --config=build-scripts/rollup.config.js",

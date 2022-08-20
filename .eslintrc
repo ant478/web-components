@@ -22,7 +22,7 @@
     "no-mixed-operators": "off",
     "no-bitwise": "off",
     "no-multi-assign": "off",
-    "no-continue": "off"
+    "no-continue": "off",
   },
   "parser": "@babel/eslint-parser"
 }

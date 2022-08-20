@@ -1,8 +1,38 @@
+:host {
+  --wc-fill-color: currentColor;
+  --wc-gear-spin-duration: 0s;
+
+  display: block;
+
+  &::part(root) {
+    border-radius: 50%;
+    fill: var(--wc-fill-color);
+  }
+
+  &::part(gear) {
+    animation: spin var(--wc-gear-spin-duration) linear infinite;
+    transform-origin: center;
+  }
+
+  &:host([wc-theme-original]) {
+    &::part(root) {
+      background-color: #fefefe;
+    }
+
+    &::part(head) {
+      fill: #5a0000;
+    }
+
+    &::part(gear),
+    &::part(hammer),
+    &::part(wrench),
+    &::part(number) {
+      fill: #191919;
+    }
+  }
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-:host {
-  display: block;
 }
