@@ -1,12 +1,15 @@
 {
   "name": "@ant478/web-components",
   "version": "1.0.4",
-  "module": "dist/index.esm.js",
-  "main": "dist/index.umd.js",
+  "module": "dist/esm/index.js",
+  "main": "dist/umd/index.js",
   "description": "",
   "author": "ant478",
   "license": "ISC",
   "sideEffects": false,
+  "browserslist": [
+    "last 10 versions, not < 1%, not dead"
+  ],
   "homepage": "https://github.com/ant478/web-components#readme",
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
     "dist/"
   ],
   "dependencies": {
+    "@babel/runtime": "^7.18.9",
     "handlebars": ">= 1.3.0 < 5"
   }
 }

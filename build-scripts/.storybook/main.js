@@ -1,5 +1,5 @@
 const paths = require('../paths');
-const customConfig = require('../webpack.config.js')();
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   stories: [{
@@ -19,22 +19,66 @@ module.exports = {
     };
   },
   webpackFinal: async (config) => {
+    const plugins = config.plugins.filter((plugin) => plugin.constructor.name !== 'HotModuleReplacementPlugin');
+    plugins.push(
+      new CleanWebpackPlugin({
+        cleanStaleWebpackAssets: false,
+        cleanOnceBeforeBuildPatterns: [
+          '**/*',
+          '!.gitkeep'
+        ]
+      })
+    );
+
     return {
       ...config,
       entry: config.entry.filter((entry) => !entry.includes('webpack-hot-middleware')),
-      performance: customConfig.performance,
+      performance: false,
       module: {
         ...config.module,
-        rules: customConfig.module.rules,
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: [paths.nodeModules],
+            use: 'babel-loader'
+          },
+          {
+            test: /\.s?css$/,
+            use: [
+              'to-string-loader',
+              'css-loader',
+              {
+                loader: 'postcss-loader',
+                options: {
+                  postcssOptions: {
+                    plugins: ['postcss-preset-env']
+                  }
+                }
+              },
+              'sass-loader'
+            ]
+          },
+          {
+            test: /\.hbs/,
+            use: [
+              {
+                loader: 'handlebars-loader',
+                options: {
+                  runtime: 'handlebars/runtime'
+                }
+              }
+            ]
+          }
+        ],
       },
       resolve: {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
-          ...customConfig.resolve.alias,
+          src: paths.src,
         },
       },
-      plugins: config.plugins.filter((plugin) => plugin.constructor.name !== 'HotModuleReplacementPlugin'),
+      plugins,
     };
   },
 };
