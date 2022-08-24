@@ -1,0 +1,41 @@
+@mixin link-underline {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+
+  &:focus {
+    text-decoration-color: currentColor;
+  }
+
+  @supports #{'\selector(*:focus-visible)'} {
+    &:focus {
+      text-decoration-color: transparent;
+    }
+
+    &:focus-visible {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+
+  &:active {
+    text-decoration-color: currentColor;
+  }
+}
+
+@mixin full-size($position: absolute, $indent: 0) {
+  bottom: $indent;
+  left: $indent;
+  position: $position;
+  right: $indent;
+  top: $indent;
+}
+
+@mixin absolute-transform-centering {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

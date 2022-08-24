@@ -1,0 +1,37 @@
+<template id={{id}}>
+  <style>{{styles}}</style>
+
+  <div id="root" part="footer" class="footer">
+    {{> column side="left" icons=leftSideIcons}}
+    <div part="footer_signature-outer" class="footer_signature-outer">
+      <p part="footer_signature" class="footer_signature">
+        Designed and developed by <span part="footer_nickname" class="footer_nickname">{{nickname}}</span>
+      </p>
+    </div>
+    {{> column side="right" icons=rightSideIcons}}
+  </div>
+</template>
+
+{{#*inline "column"}}
+  <div part="column column__{{side}}" class="column column__{{side}}">
+    {{#each icons}} {{> link this}} {{/each}}
+  </div>
+{{/inline}}
+
+{{#*inline "link"}}
+  <a
+    part="link"
+    class="link"
+    href={{this.href}}
+    target="_blank"
+    rel="noreferrer"
+    title={{this.title}}
+  >
+    <div part="link_icon" class="link_icon">
+      {{{this.icon}}}
+    </div>
+    {{#if this.text}}
+      <span part="link_text" class="link_text">{{this.text}}</span>
+    {{/if}}
+  </a>
+{{/inline}}
