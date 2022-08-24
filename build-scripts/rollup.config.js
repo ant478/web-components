@@ -66,6 +66,7 @@ export default {
       ],
       sourceMap: isDevelopment,
       minimize: !isDevelopment,
+      inject: false,
       extract: false,
       extensions: ['.sass']
     }),

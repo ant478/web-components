@@ -1,8 +1,27 @@
 @import '../../common-styles';
 
-:host {
-  $transition: 0.1s ease-in-out;
+$transition: 0.1s ease-in-out;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+div,
+span,
+a,
+p {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+:host {
   background-color: #0f0f0f;
   color: #919191;
   display: block;
@@ -10,111 +29,92 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.375;
+}
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+.footer {
+  display: flex;
+  height: 2.75em;
+  padding: 0.5em 1.5em;
 
-  div,
-  span,
-  a,
-  p {
-    border: 0;
-    color: inherit;
-    font: inherit;
-    font-size: 100%;
-    margin: 0;
-    outline: none;
-    padding: 0;
-  }
-
-  .footer {
-    display: flex;
-    height: 2.75em;
-    padding: 0.5em 1.5em;
-
-    &_signature-outer {
-      align-items: center;
-      display: flex;
-      flex: 1;
-      justify-content: center;
-    }
-
-    &_signature {
-      font-size: 1.25em;
-      line-height: 1.4;
-      text-align: center;
-    }
-
-    &_nickname {
-      color: #009194;
-      font-weight: 700;
-    }
-  }
-
-  .column {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: -0.75em;
-
-    &__left {
-      justify-content: flex-start;
-      margin-left: -0.5em;
-      margin-right: 1em;
-    }
-
-    &__right {
-      justify-content: flex-end;
-      margin-left: 1em;
-      margin-right: -0.5em;
-    }
-  }
-
-  .link {
-    @include link-underline;
-
+  &_signature-outer {
     align-items: center;
-    display: inline-flex;
-    margin: 0 0.5em 0.75em;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color $transition;
-    vertical-align: middle;
-    white-space: nowrap;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
 
-    &_icon {
-      fill: #444;
-      height: 1.75em;
-      transition: fill $transition;
-      width: 1.75em;
+  &_signature {
+    font-size: 1.25em;
+    line-height: 1.4;
+    text-align: center;
+  }
 
+  &_nickname {
+    color: #009194;
+    font-weight: 700;
+  }
+}
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -0.75em;
+
+  &__left {
+    justify-content: flex-start;
+    margin-left: -0.5em;
+    margin-right: 1em;
+  }
+
+  &__right {
+    justify-content: flex-end;
+    margin-left: 1em;
+    margin-right: -0.5em;
+  }
+}
+
+.link {
+  @include link-underline;
+
+  align-items: center;
+  display: inline-flex;
+  margin: 0 0.5em 0.75em;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color $transition;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &_icon {
+    fill: #444;
+    height: 1.75em;
+    transition: fill $transition;
+    width: 1.75em;
+
+    .link:focus & {
+      fill: #666;
+    }
+
+    @supports #{'\selector(*:focus-visible)'} {
       .link:focus & {
-        fill: #666;
+        fill: #444;
       }
 
-      .link:hover & {
+      .link:focus-visible & {
         fill: #666;
-      }
-
-      .link:active & {
-        fill: #666;
-      }
-
-      @supports #{'\selector(*:focus-visible)'} {
-        .link:focus & {
-          fill: #444;
-        }
-
-        .link:focus-visible & {
-          fill: #666;
-        }
       }
     }
 
-    &_text {
-      margin-left: 0.5em;
+    .link:hover & {
+      fill: #666;
     }
+
+    .link:active & {
+      fill: #666;
+    }
+  }
+
+  &_text {
+    margin-left: 0.5em;
   }
 }
