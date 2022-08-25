@@ -22,19 +22,31 @@ p {
 }
 
 :host {
-  background-color: #0f0f0f;
-  color: #919191;
   display: block;
+}
+
+.footer {
+  --wc-text-color: #919191;
+  --wc-nickname-text-color: #009194;
+  --wc-background-color: #0f0f0f;
+  --wc-icon-fill-color: #444;
+  --wc-icon-fill-color-hover: #666;
+  --wc-selection-background-color: var(--wc-text-color);
+  --wc-selection-text-color: #151515;
+
+  background-color: var(--wc-background-color);
+  color: var(--wc-text-color);
+  display: flex;
   font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.375;
-}
-
-.footer {
-  display: flex;
-  height: 2.75em;
   padding: 0.5em 1.5em;
+
+  *::selection {
+    background-color: var(--wc-selection-background-color);
+    color: var(--wc-selection-text-color);
+  }
 
   &_signature-outer {
     align-items: center;
@@ -50,7 +62,7 @@ p {
   }
 
   &_nickname {
-    color: #009194;
+    color: var(--wc-nickname-text-color);
     font-weight: 700;
   }
 }
@@ -79,38 +91,36 @@ p {
   align-items: center;
   display: inline-flex;
   margin: 0 0.5em 0.75em;
-  text-decoration: underline;
-  text-decoration-color: transparent;
   transition: text-decoration-color $transition;
   vertical-align: middle;
   white-space: nowrap;
 
   &_icon {
-    fill: #444;
+    fill: var(--wc-icon-fill-color);
     height: 1.75em;
     transition: fill $transition;
     width: 1.75em;
 
     .link:focus & {
-      fill: #666;
+      fill: var(--wc-icon-fill-color-hover);
     }
 
     @supports #{'\selector(*:focus-visible)'} {
       .link:focus & {
-        fill: #444;
+        fill: var(--wc-icon-fill-color);
       }
 
       .link:focus-visible & {
-        fill: #666;
+        fill: var(--wc-icon-fill-color-hover);
       }
     }
 
     .link:hover & {
-      fill: #666;
+      fill: var(--wc-icon-fill-color-hover);
     }
 
     .link:active & {
-      fill: #666;
+      fill: var(--wc-icon-fill-color-hover);
     }
   }
 

@@ -1,38 +1,53 @@
 :host {
-  --wc-fill-color: currentColor;
-  --wc-gear-spin-duration: 0s;
-
   display: block;
+}
 
-  &::part(root) {
-    border-radius: 50%;
-    fill: var(--wc-fill-color);
+.logo {
+  --wc-gear-spin-duration: 0s;
+  --wc-background-color: transparent;
+  --wc-fill-color: currentColor;
+  --wc-head-fill-color: var(--wc-fill-color);
+  --wc-gear-fill-color: var(--wc-fill-color);
+  --wc-wrench-fill-color: var(--wc-fill-color);
+  --wc-hammer-fill-color: var(--wc-fill-color);
+  --wc-number-fill-color: var(--wc-fill-color);
+
+  background-color: var(--wc-background-color);
+  border-radius: 50%;
+
+  :host([wc-theme='original']) & {
+    --wc-background-color: #fefefe;
+    --wc-head-fill-color: #5a0000;
+    --wc-gear-fill-color: #191919;
+    --wc-wrench-fill-color: #191919;
+    --wc-hammer-fill-color: #191919;
+    --wc-number-fill-color: #191919;
   }
 
-  &::part(gear) {
+  &_head {
+    fill: var(--wc-head-fill-color);
+  }
+
+  &_gear {
     animation: spin var(--wc-gear-spin-duration) linear infinite;
+    fill: var(--wc-gear-fill-color);
     transform-origin: center;
   }
 
-  &:host([wc-theme-original]) {
-    &::part(root) {
-      background-color: #fefefe;
-    }
-
-    &::part(head) {
-      fill: #5a0000;
-    }
-
-    &::part(gear),
-    &::part(hammer),
-    &::part(wrench),
-    &::part(number) {
-      fill: #191919;
-    }
+  &_wrench {
+    fill: var(--wc-wrench-fill-color);
   }
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  &_hammer {
+    fill: var(--wc-hammer-fill-color);
   }
+
+  &_number {
+    fill: var(--wc-number-fill-color);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
