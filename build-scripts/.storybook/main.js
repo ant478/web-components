@@ -7,6 +7,10 @@ module.exports = {
     directory: paths.components,
     files: '*/stories/*.story.js',
   }],
+  addons: [
+    '@storybook/addon-backgrounds',
+    '@whitespace/storybook-addon-html',
+  ],
   framework: '@storybook/web-components',
   core: {
     builder: '@storybook/builder-webpack5'

@@ -40,7 +40,8 @@
     "core-js": "3.24.1",
     "cross-env": "7.0.3",
     "express": "4.18.1",
-    "heroku-ssl-redirect": "0.1.1"
+    "heroku-ssl-redirect": "0.1.1",
+    "lodash": "4.17.21"
   },
   "devDependencies": {
     "@babel/core": "7.18.10",
@@ -51,9 +52,11 @@
     "@rollup/plugin-babel": "5.3.1",
     "@rollup/plugin-commonjs": "22.0.2",
     "@rollup/plugin-node-resolve": "13.3.0",
+    "@storybook/addon-backgrounds": "6.5.10",
     "@storybook/builder-webpack5": "6.5.10",
     "@storybook/manager-webpack5": "6.5.10",
     "@storybook/web-components": "6.5.10",
+    "@whitespace/storybook-addon-html": "5.0.0",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.5",
     "clean-webpack-plugin": "4.0.0",
