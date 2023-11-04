@@ -24,4 +24,4 @@ if (!customElements.get('ant478-logo')) {
 <ant478-logo></ant478-logo>
 ```
 
-For components list and configuration options see storybook - https://ant478-web-components.herokuapp.com/
+For components list and configuration options see storybook - https://ant478-web-components-fe0a38cee350.herokuapp.com/
